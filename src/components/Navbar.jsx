@@ -1,34 +1,40 @@
-import { Flex, Heading, Tab, TabList, Tabs } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import {
+    Box,
+    Button,
+    Flex,
+    Heading,
+    Spacer,
+    Tab,
+    TabList,
+    Tabs,
+    Text,
+} from "@chakra-ui/react";
+import { Link, useLocation } from "react-router-dom";
 
 export const Navbar = () => {
+    const location = useLocation();
+
+    const renderLeftContent = () => {
+        if (location.pathname == "/ramal") {
+            return <Heading as="h1">Prediksi</Heading>;
+        } else if (location.pathname == "/klasemen") {
+            return <Heading as="h1">Klasemen</Heading>;
+        }
+    };
+
+    const renderRightContent = () => {
+        if (location.pathname == "/ramal") {
+            return <Button colorScheme="blue">Create</Button>;
+        } else if (location.pathname == "/klasemen") {
+            return <Text>©kelompok4</Text>;
+        }
+    };
+
     return (
-        <Flex p="30px" bg="blue.400" justify="space-between">
-            <Heading color="white">FM Predict</Heading>
-            <Tabs
-                colorScheme="whiteAlpha"
-                size="lg"
-                sx={{
-                    "& .chakra-tabs__tab": {
-                        "&:focus": {
-                            boxShadow: "none",
-                            borderColor: "transparent",
-                        },
-                    },
-                }}
-            >
-                <TabList>
-                    <Tab as={Link} to="/">
-                        Home
-                    </Tab>
-                    <Tab as={Link} to="/create">
-                        About
-                    </Tab>
-                    <Tab as={Link} to="/profile">
-                        Profile
-                    </Tab>
-                </TabList>
-            </Tabs>
+        <Flex as="nav" p="10px" alignItems="center">
+            <Box>{renderLeftContent()}</Box>
+            <Spacer />
+            <Box>{renderRightContent()}</Box>
         </Flex>
     );
 };
