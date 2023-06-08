@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import { Sidebar } from "../components/Sidebar";
 import { Navbar } from "../components/Navbar";
 import { Box, Grid, GridItem, Heading, Image, Flex } from "@chakra-ui/react";
 
@@ -17,6 +18,9 @@ export const RootLayout = () => {
                     <Heading paddingLeft="10px" size="md" color="white">
                         FM Predict
                     </Heading>
+                </Flex>
+                <Flex alignItems="center" marginTop="20px">
+                    <Sidebar />
                 </Flex>
             </GridItem>
             <GridItem as="main" colSpan="5" p="40px">
