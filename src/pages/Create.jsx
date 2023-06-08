@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import * as d3 from "d3";
 import {
     Table,
@@ -29,67 +31,71 @@ export const Create = () => {
 
     useEffect(() => {
         setData(generateData());
+        AOS.init();
+        AOS.refresh();
     }, [!data]);
     return (
-        <TableContainer paddingTop="30px">
-            <Table variant="striped" colorScheme="blue">
-                <Thead>
-                    <Tr>
-                        <Th textAlign="center">Home Team</Th>
-                        <Th textAlign="center">Away Team</Th>
-                        <Th textAlign="center">Group</Th>
-                        <Th textAlign="center">Date</Th>
-                        <Th textAlign="center">Result</Th>
-                    </Tr>
-                </Thead>
-                <Tbody>
-                    <Tr>
-                        <Td textAlign="center">Manchester City</Td>
-                        <Td textAlign="center">Manchester United</Td>
-                        <Td textAlign="center">Group A</Td>
-                        <Td textAlign="center">10-05-2023</Td>
-                        <Td>
-                            <PieChart
-                                data={data}
-                                width={100}
-                                height={100}
-                                innerRadius={0}
-                                outerRadius={50}
-                            />
-                        </Td>
-                    </Tr>
-                    <Tr>
-                        <Td textAlign="center">Manchester City</Td>
-                        <Td textAlign="center">Manchester United</Td>
-                        <Td textAlign="center">Group A</Td>
-                        <Td textAlign="center">10-05-2023</Td>
-                        <Td>
-                            <PieChart
-                                data={data}
-                                width={100}
-                                height={100}
-                                innerRadius={0}
-                                outerRadius={50}
-                            />
-                        </Td>
-                    </Tr>
-                    <Tr>
-                        <Td textAlign="center">Manchester City</Td>
-                        <Td textAlign="center">Manchester United</Td>
-                        <Td textAlign="center">Group A</Td>
-                        <Td textAlign="center">10-05-2023</Td>
-                        <Td>
-                            <PieChart
-                                data={data}
-                                width={100}
-                                height={100}
-                                innerRadius={0}
-                                outerRadius={50}
-                            />
-                        </Td>
-                    </Tr>
-                </Tbody>
-            </Table>
-        </TableContainer>
+        <div data-aos="fade-up">
+            <TableContainer paddingTop="30px">
+                <Table variant="striped" colorScheme="blue">
+                    <Thead>
+                        <Tr>
+                            <Th textAlign="center">Home Team</Th>
+                            <Th textAlign="center">Away Team</Th>
+                            <Th textAlign="center">Group</Th>
+                            <Th textAlign="center">Date</Th>
+                            <Th textAlign="center">Result</Th>
+                        </Tr>
+                    </Thead>
+                    <Tbody>
+                        <Tr>
+                            <Td textAlign="center">Manchester City</Td>
+                            <Td textAlign="center">Manchester United</Td>
+                            <Td textAlign="center">Group A</Td>
+                            <Td textAlign="center">10-05-2023</Td>
+                            <Td>
+                                <PieChart
+                                    data={data}
+                                    width={100}
+                                    height={100}
+                                    innerRadius={0}
+                                    outerRadius={50}
+                                />
+                            </Td>
+                        </Tr>
+                        <Tr>
+                            <Td textAlign="center">Manchester City</Td>
+                            <Td textAlign="center">Manchester United</Td>
+                            <Td textAlign="center">Group A</Td>
+                            <Td textAlign="center">10-05-2023</Td>
+                            <Td>
+                                <PieChart
+                                    data={data}
+                                    width={100}
+                                    height={100}
+                                    innerRadius={0}
+                                    outerRadius={50}
+                                />
+                            </Td>
+                        </Tr>
+                        <Tr>
+                            <Td textAlign="center">Manchester City</Td>
+                            <Td textAlign="center">Manchester United</Td>
+                            <Td textAlign="center">Group A</Td>
+                            <Td textAlign="center">10-05-2023</Td>
+                            <Td>
+                                <PieChart
+                                    data={data}
+                                    width={100}
+                                    height={100}
+                                    innerRadius={0}
+                                    outerRadius={50}
+                                />
+                            </Td>
+                        </Tr>
+                    </Tbody>
+                </Table>
+            </TableContainer>
+        </div>
     );
 };

@@ -19,7 +19,7 @@ export const Sidebar = () => {
     };
 
     const activeLinkStyles = {
-        color: "#165a72",
+        color: "#1e7898",
     };
 
     return (
