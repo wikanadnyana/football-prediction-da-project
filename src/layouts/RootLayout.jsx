@@ -8,10 +8,10 @@ export const RootLayout = () => {
         <Grid templateColumns="repeat(6, 1fr)" bg="gray.50">
             <GridItem
                 as="aside"
-                colSpan="1"
+                colSpan={{ base: 6, lg: 2, xl: 1 }}
                 bg="blue.400"
-                minHeight="100vh"
-                p="30px"
+                minHeight={{ lg: "100vh" }}
+                p={{ base: "20px", lg: "30px" }}
             >
                 <Flex alignItems="center">
                     <Image boxSize="30px" src="/images/ball.png" alt="ball" />
@@ -23,9 +23,11 @@ export const RootLayout = () => {
                     <Sidebar />
                 </Flex>
             </GridItem>
-            <GridItem as="main" colSpan="5" p="40px">
-                <Navbar />
-                <Outlet />
+            <GridItem as="main" colSpan={{ base: 6, lg: 4, xl: 5 }} p="40px">
+                <Flex flexDirection="column" h="100%">
+                    <Navbar />
+                    <Outlet />
+                </Flex>
             </GridItem>
         </Grid>
     );

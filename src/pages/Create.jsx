@@ -34,6 +34,27 @@ export const Create = () => {
         AOS.init();
         AOS.refresh();
     }, [!data]);
+
+    const teamData = [
+        {
+            homeTeam: "Manchester City",
+            awayTeam: "Manchester United",
+            group: "Group A",
+            date: "10-05-2023",
+        },
+        {
+            homeTeam: "Arsenal",
+            awayTeam: "Chelsea",
+            group: "Group A",
+            date: "10-05-2023",
+        },
+        {
+            homeTeam: "Everton",
+            awayTeam: "Tottenham",
+            group: "Group A",
+            date: "10-05-2023",
+        },
+    ];
     return (
         <div data-aos="fade-up">
             <TableContainer paddingTop="30px">
@@ -45,54 +66,28 @@ export const Create = () => {
                             <Th textAlign="center">Group</Th>
                             <Th textAlign="center">Date</Th>
                             <Th textAlign="center">Result</Th>
+                            <Th textAlign="center">Action</Th>
                         </Tr>
                     </Thead>
                     <Tbody>
-                        <Tr>
-                            <Td textAlign="center">Manchester City</Td>
-                            <Td textAlign="center">Manchester United</Td>
-                            <Td textAlign="center">Group A</Td>
-                            <Td textAlign="center">10-05-2023</Td>
-                            <Td>
-                                <PieChart
-                                    data={data}
-                                    width={100}
-                                    height={100}
-                                    innerRadius={0}
-                                    outerRadius={50}
-                                />
-                            </Td>
-                        </Tr>
-                        <Tr>
-                            <Td textAlign="center">Manchester City</Td>
-                            <Td textAlign="center">Manchester United</Td>
-                            <Td textAlign="center">Group A</Td>
-                            <Td textAlign="center">10-05-2023</Td>
-                            <Td>
-                                <PieChart
-                                    data={data}
-                                    width={100}
-                                    height={100}
-                                    innerRadius={0}
-                                    outerRadius={50}
-                                />
-                            </Td>
-                        </Tr>
-                        <Tr>
-                            <Td textAlign="center">Manchester City</Td>
-                            <Td textAlign="center">Manchester United</Td>
-                            <Td textAlign="center">Group A</Td>
-                            <Td textAlign="center">10-05-2023</Td>
-                            <Td>
-                                <PieChart
-                                    data={data}
-                                    width={100}
-                                    height={100}
-                                    innerRadius={0}
-                                    outerRadius={50}
-                                />
-                            </Td>
-                        </Tr>
+                        {teamData.map((team, index) => (
+                            <Tr key={index}>
+                                <Td textAlign="center">{team.homeTeam}</Td>
+                                <Td textAlign="center">{team.awayTeam}</Td>
+                                <Td textAlign="center">{team.date}</Td>
+                                <Td textAlign="center">{team.group}</Td>
+                                <Td>
+                                    <PieChart
+                                        data={data}
+                                        width={100}
+                                        height={100}
+                                        innerRadius={0}
+                                        outerRadius={50}
+                                    />
+                                </Td>
+                                <Td textAlign="center"></Td>
+                            </Tr>
+                        ))}
                     </Tbody>
                 </Table>
             </TableContainer>
