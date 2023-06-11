@@ -35,9 +35,16 @@ export const PieChart = (props) => {
             .merge(groupWithData.select("path.arc"));
 
         path.attr("class", "arc")
-            .attr("d", createArc)
-            .attr("fill", (d, i) => colors(i));
-        // .attr("transform", "translate(40,40)");
+            .attr("fill", (d, i) => colors(i))
+            .transition() // Menambahkan transisi pada elemen path
+            .duration(1000) // Durasi transisi dalam milidetik
+            .attrTween("d", function (d) {
+                const interpolate = d3.interpolate(this._current, d);
+                this._current = interpolate(0);
+                return function (t) {
+                    return createArc(interpolate(t));
+                };
+            });
 
         const text = groupWithUpdate
             .append("text")
