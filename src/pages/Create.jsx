@@ -15,7 +15,7 @@ import {
 import { PieChart } from "../components/PieChart";
 
 export const Create = () => {
-    const generateData = (value, length = 3) =>
+    const generateData = (value, length = 2) =>
         d3.range(length).map((item, index) => ({
             date: index,
             value:
@@ -66,7 +66,7 @@ export const Create = () => {
                             <Th textAlign="center">Group</Th>
                             <Th textAlign="center">Date</Th>
                             <Th textAlign="center">Result</Th>
-                            <Th textAlign="center">Action</Th>
+                            {/* <Th textAlign="center">Action</Th> */}
                         </Tr>
                     </Thead>
                     <Tbody>
