@@ -15,46 +15,47 @@ import {
 import { PieChart } from "../components/PieChart";
 
 export const Create = () => {
-    const generateData = (value, length = 2) =>
-        d3.range(length).map((item, index) => ({
-            date: index,
-            value:
-                value === null || value === undefined
-                    ? Math.random() * 100
-                    : value,
-        }));
+    // const generateData = (homePrediction, awayPrediction) => {
+    //     return [
+    //       {
+    //         date: 0,
+    //         value: homePrediction},
+    //       {
+    //         date: 1,
+    //         value: awayPrediction
+    //       },
+    //     ];
+    //   };
 
-    const [data, setData] = useState(generateData(0));
-    const changeData = () => {
-        setData(generateData());
-    };
+    // const [data, setData] = useState(generateData(null, null));
+    const [teamData, setTeamData] = useState([]);
 
     useEffect(() => {
-        setData(generateData());
         AOS.init();
         AOS.refresh();
-    }, [!data]);
 
-    const teamData = [
-        {
-            homeTeam: "Manchester City",
-            awayTeam: "Manchester United",
-            group: "Group A",
-            date: "10-05-2023",
-        },
-        {
-            homeTeam: "Arsenal",
-            awayTeam: "Chelsea",
-            group: "Group A",
-            date: "10-05-2023",
-        },
-        {
-            homeTeam: "Everton",
-            awayTeam: "Tottenham",
-            group: "Group A",
-            date: "10-05-2023",
-        },
-    ];
+        const fetchData = () => {
+            fetch("http://localhost:5000/api/predictions")
+                .then((response) => response.json())
+                .then((data) => {
+                    setTeamData(data);
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
+        };
+
+        fetchData(); // Initial data fetch
+
+        // Fetch data every 5 seconds (adjust the interval as needed)
+        const intervalId = setInterval(fetchData, 1000);
+
+        return () => {
+            // Cleanup interval when the component is unmounted
+            clearInterval(intervalId);
+        };
+    }, []);
+
     return (
         <div data-aos="fade-up">
             <TableContainer paddingTop="30px">
@@ -63,8 +64,8 @@ export const Create = () => {
                         <Tr>
                             <Th textAlign="center">Home Team</Th>
                             <Th textAlign="center">Away Team</Th>
-                            <Th textAlign="center">Group</Th>
                             <Th textAlign="center">Date</Th>
+                            <Th textAlign="center">Group</Th>
                             <Th textAlign="center">Result</Th>
                             {/* <Th textAlign="center">Action</Th> */}
                         </Tr>
@@ -72,13 +73,22 @@ export const Create = () => {
                     <Tbody>
                         {teamData.map((team, index) => (
                             <Tr key={index}>
-                                <Td textAlign="center">{team.homeTeam}</Td>
-                                <Td textAlign="center">{team.awayTeam}</Td>
-                                <Td textAlign="center">{team.date}</Td>
+                                <Td textAlign="center">{team.home_code}</Td>
+                                <Td textAlign="center">{team.opp_code}</Td>
+                                <Td textAlign="center">{team.match_date}</Td>
                                 <Td textAlign="center">{team.group}</Td>
                                 <Td>
                                     <PieChart
-                                        data={data}
+                                        data={[
+                                            {
+                                                date: 0,
+                                                value: team.home_prediction,
+                                            },
+                                            {
+                                                date: 1,
+                                                value: team.away_prediction,
+                                            },
+                                        ]}
                                         width={100}
                                         height={100}
                                         innerRadius={0}

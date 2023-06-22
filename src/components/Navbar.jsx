@@ -60,7 +60,7 @@ export const Navbar = () => {
 
         // Contoh menggunakan Axios untuk mengirim data
         axios
-            .post("http://localhost:5000/predict", {
+            .post("http://localhost:5000/api/predict", {
                 home_code: homeTeam,
                 opp_code: awayTeam,
                 date: date,
