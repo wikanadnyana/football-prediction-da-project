@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import * as d3 from "d3";
+import { AttachmentIcon, DeleteIcon } from "@chakra-ui/icons";
 import {
     Table,
     Thead,
@@ -20,6 +21,7 @@ import {
     ModalCloseButton,
     Button,
     useDisclosure,
+    IconButton,
 } from "@chakra-ui/react";
 import { PieChart } from "../components/PieChart";
 
@@ -173,11 +175,23 @@ export const Create = () => {
                                 </Td>
                                 <Td textAlign="center">
                                     <>
-                                        <Button
+                                        {/* <Button
                                             onClick={() => getDetail(team.id)}
                                         >
                                             Detail
-                                        </Button>
+                                        </Button> */}
+                                        <IconButton
+                                            aria-label="Search database"
+                                            icon={<AttachmentIcon />}
+                                            onClick={() => getDetail(team.id)}
+                                            colorScheme="blue"
+                                        />
+                                        <IconButton
+                                            aria-label="Search database"
+                                            icon={<DeleteIcon />}
+                                            marginLeft="5px"
+                                            colorScheme="blue"
+                                        />
 
                                         <Modal
                                             isOpen={isOpen}
