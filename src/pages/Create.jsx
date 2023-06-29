@@ -89,6 +89,7 @@ export const Create = () => {
         id: " ",
         home_prediction: " ",
         away_prediction: " ",
+        draw_prediction: " ",
     });
 
     useEffect(() => {
@@ -166,6 +167,10 @@ export const Create = () => {
                                                 date: 1,
                                                 value: team.away_prediction,
                                             },
+                                            {
+                                                date: 2,
+                                                value: team.draw_prediction,
+                                            },
                                         ]}
                                         width={100}
                                         height={100}
@@ -205,9 +210,12 @@ export const Create = () => {
                                                 <ModalCloseButton />
                                                 <ModalBody>
                                                     Home Prediction :{" "}
-                                                    {detailData.home_prediction}{" "}
-                                                    Away Prediction :{" "}
+                                                    {detailData.home_prediction}
+                                                    % Away Prediction :{" "}
                                                     {detailData.away_prediction}
+                                                    % Draw Prediction :{" "}
+                                                    {detailData.draw_prediction}
+                                                    %
                                                 </ModalBody>
 
                                                 <ModalFooter>
