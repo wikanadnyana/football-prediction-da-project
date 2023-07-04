@@ -11,6 +11,7 @@ import { RootLayout } from "./layouts/RootLayout";
 import { Create } from "./pages/Create";
 import { Profile } from "./pages/Profile";
 import { Klasemen } from "./pages/Klasemen";
+import "c3/c3.css";
 
 const router = createBrowserRouter(
     createRoutesFromElements(

@@ -24,7 +24,7 @@ export const Sidebar = () => {
 
     return (
         <List {...linkStyles}>
-            <ListItem>
+            {/* <ListItem>
                 <NavLink
                     to="/"
                     onClick={() => handleLinkClick(0)}
@@ -33,7 +33,7 @@ export const Sidebar = () => {
                     <ListIcon as={StarIcon} color="white" />
                     Dashboard
                 </NavLink>
-            </ListItem>
+            </ListItem> */}
             <ListItem>
                 <NavLink
                     to="ramal"
