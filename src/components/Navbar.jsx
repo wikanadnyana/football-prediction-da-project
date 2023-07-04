@@ -17,6 +17,7 @@ import {
     FormControl,
     FormLabel,
     Input,
+    Select,
 } from "@chakra-ui/react";
 // import { InputForm } from "./InputForm";
 import { Link, useLocation } from "react-router-dom";
@@ -98,25 +99,111 @@ export const Navbar = () => {
                                 <ModalBody pb={6}>
                                     <FormControl>
                                         <FormLabel>Home Team</FormLabel>
-                                        <Input
+                                        <Select
                                             ref={initialRef}
-                                            placeholder="e.g Manchester City"
-                                            value={homeTeam}
                                             onChange={(e) =>
                                                 setHomeTeam(e.target.value)
                                             }
-                                        />
+                                        >
+                                            <option value="0">Arsenal</option>
+                                            <option value="1">
+                                                Aston Villa
+                                            </option>
+                                            <option value="2">
+                                                Bournemouth
+                                            </option>
+                                            <option value="3">Brentford</option>
+                                            <option value="4">Brighton</option>
+                                            <option value="5">Chelsea</option>
+                                            <option value="6">
+                                                Crystal Palace
+                                            </option>
+                                            <option value="7">Everton</option>
+                                            <option value="8">Fulham</option>
+                                            <option value="9">
+                                                Leeds United
+                                            </option>
+                                            <option value="10">
+                                                Leicester City
+                                            </option>
+                                            <option value="11">
+                                                Liverpool
+                                            </option>
+                                            <option value="12">
+                                                Manchester City
+                                            </option>
+                                            <option value="13">
+                                                Manchester United
+                                            </option>
+                                            <option value="14">
+                                                Newcastle
+                                            </option>
+                                            <option value="15">
+                                                Nottingham Forest
+                                            </option>
+                                            <option value="16">
+                                                Southampton
+                                            </option>
+                                            <option value="17">
+                                                Tottenham
+                                            </option>
+                                            <option value="18">West Ham</option>
+                                            <option value="19">Wolves</option>
+                                        </Select>
                                     </FormControl>
 
                                     <FormControl mt={4}>
                                         <FormLabel>Away Team</FormLabel>
-                                        <Input
-                                            placeholder="e.g Arsenal"
-                                            value={awayTeam}
+                                        <Select
                                             onChange={(e) =>
                                                 setAwayTeam(e.target.value)
                                             }
-                                        />
+                                        >
+                                            <option value="0">Arsenal</option>
+                                            <option value="1">
+                                                Aston Villa
+                                            </option>
+                                            <option value="2">
+                                                Bournemouth
+                                            </option>
+                                            <option value="3">Brentford</option>
+                                            <option value="4">Brighton</option>
+                                            <option value="5">Chelsea</option>
+                                            <option value="6">
+                                                Crystal Palace
+                                            </option>
+                                            <option value="7">Everton</option>
+                                            <option value="8">Fulham</option>
+                                            <option value="9">
+                                                Leeds United
+                                            </option>
+                                            <option value="10">
+                                                Leicester City
+                                            </option>
+                                            <option value="11">
+                                                Liverpool
+                                            </option>
+                                            <option value="12">
+                                                Manchester City
+                                            </option>
+                                            <option value="13">
+                                                Manchester United
+                                            </option>
+                                            <option value="14">
+                                                Newcastle
+                                            </option>
+                                            <option value="15">
+                                                Nottingham Forest
+                                            </option>
+                                            <option value="16">
+                                                Southampton
+                                            </option>
+                                            <option value="17">
+                                                Tottenham
+                                            </option>
+                                            <option value="18">West Ham</option>
+                                            <option value="19">Wolves</option>
+                                        </Select>
                                     </FormControl>
 
                                     <FormControl mt={4}>

@@ -22,8 +22,10 @@ import {
     Button,
     useDisclosure,
     IconButton,
+    Flex,
 } from "@chakra-ui/react";
 import { PieChart } from "../components/PieChart";
+import c3 from "c3";
 
 export const Create = () => {
     // const generateData = (homePrediction, awayPrediction) => {
@@ -73,7 +75,7 @@ export const Create = () => {
         } else if (teamCode == 15) {
             return "Nottingham Forest";
         } else if (teamCode == 16) {
-            return "Southampton	";
+            return "Southampton";
         } else if (teamCode == 17) {
             return "Tottenham";
         } else if (teamCode == 18) {
@@ -118,6 +120,37 @@ export const Create = () => {
         };
     }, []);
 
+    // useEffect(() => {
+    //     const chartData = teamData.map((team) => {
+    //         return {
+    //             teamName: teamName(team.home_code),
+    //             homePrediction: team.home_prediction,
+    //             awayPrediction: team.away_prediction,
+    //             drawPrediction: team.draw_prediction,
+    //         };
+    //     });
+
+    //     const chartColumns = [
+    //         ["Home", ...chartData.map((data) => data.homePrediction)],
+    //         ["Away", ...chartData.map((data) => data.awayPrediction)],
+    //         ["Draw", ...chartData.map((data) => data.drawPrediction)],
+    //     ];
+
+    //     c3.generate({
+    //         bindto: "#chart",
+    //         data: {
+    //             columns: chartColumns,
+    //             type: "pie",
+    //         },
+    //         axis: {
+    //             x: {
+    //                 type: "category",
+    //                 categories: chartData.map((data) => data.teamName),
+    //             },
+    //         },
+    //     });
+    // }, [teamData]);
+
     const getDetail = (id) => {
         fetch(`http://localhost:5000/api/predictions/${id}`) // Menggunakan URL dengan ID yang diberikan
             .then((response) => response.json())
@@ -156,7 +189,7 @@ export const Create = () => {
                                 </Td>
                                 <Td textAlign="center">{team.match_date}</Td>
                                 <Td textAlign="center">{team.group}</Td>
-                                <Td>
+                                <Td id="chart">
                                     <PieChart
                                         data={[
                                             {
@@ -177,6 +210,7 @@ export const Create = () => {
                                         innerRadius={0}
                                         outerRadius={50}
                                     />
+                                    {/* <Flex id="chart"></Flex>; */}
                                 </Td>
                                 <Td textAlign="center">
                                     <>
