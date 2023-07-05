@@ -225,12 +225,12 @@ export const Create = () => {
                                             onClick={() => getDetail(team.id)}
                                             colorScheme="blue"
                                         />
-                                        <IconButton
+                                        {/* <IconButton
                                             aria-label="Search database"
                                             icon={<DeleteIcon />}
                                             marginLeft="5px"
                                             colorScheme="blue"
-                                        />
+                                        /> */}
 
                                         <Modal
                                             isOpen={isOpen}

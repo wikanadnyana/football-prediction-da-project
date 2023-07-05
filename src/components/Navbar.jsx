@@ -105,6 +105,9 @@ export const Navbar = () => {
                                                 setHomeTeam(e.target.value)
                                             }
                                         >
+                                            <option value="-1">
+                                                Pilih Tim
+                                            </option>
                                             <option value="0">Arsenal</option>
                                             <option value="1">
                                                 Aston Villa
